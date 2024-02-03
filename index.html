@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <main class="grid lg:grid-cols-2">
+      <div class="w-full h-full rounded-xl lg:block">
+        <img
+          class="hidden md:w-full md:block rounded-1-xl"
+          src="https://conasems-ava-prod.s3.sa-east-1.amazonaws.com/institucional/homebanners/papel-de-parede-lado-lg-1704911696.png"
+          alt="homebanners"
+        />
+      </div>
+      <div class="flex items-center justify-center bg-cover">
+        <div class="items-center w-8/12">
+          <div class="flex mt-16 bg-white rounded-md h-55">
+            <p class="text-left md:text-5xl text-xl font-bold text-[#5F7C8D]">
+              Olá,
+            </p>
+            <p
+              class="mb-4 text-left md:text-5xl text-xl font-normal text-[#5F7C8D]"
+            >
+              você!
+            </p>
+          </div>
+          <div
+            class="flex justify-center gap-4 mt-14 mb-14 lg:gap-6 text-[#5F7C8D]"
+          >
+            <button
+              id="loginbutton"
+              class="font-serif border-b-2 lg:text-3xl border-[#5f7c8d]"
+            >
+              Login
+            </button>
+
+            <button id="signUpButton" class="font-serif border-b-2 lg:text-3xl">
+              SignUp
+            </button>
+          </div>
+
+          <form id="myform">
+            <div>
+              <label class="sr-only" for="email">Email</label>
+              <input
+                class="w-full mb-14 mt-14 md:text-2xl border-b-2 border-[#5f7c8d]"
+                placeholder="Enter your email"
+                type="text"
+                id="email"
+              />
+            </div>
+            <div>
+              <label for="sr-only" for="senha"></label>
+              <input
+                class="w-full md:text-2xl mb-14 border-b-2 border-[#5f7c8d]"
+                type="text"
+                id="senha"
+                placeholder="Enter Password"
+              />
+            </div>
+            <div>
+              <button
+                class="text-white md:text-2xl border border-[#5f7c8d] px-8 py-2 rounded-sm lg:text-xl w-full bg-[#4b687A]"
+              >
+                Login
+              </button>
+            </div>
+          </form>
+          <form id="formularioDeCadastro" class="hidden">
+            <div>
+              <label class="sr-only" for="email">Email</label>
+              <input
+                class="w-full mb-14 mt-14 md:text-2xl border-b-2 border-[#5f7c8d]"
+                placeholder="Enter your email"
+                type="text"
+              />
+            </div>
+            <div>
+              <label for="sr-only" for="senha"></label>
+              <input
+                class="w-full md:text-2xl mb-14 border-b-2 border-[#5f7c8d]"
+                type="text"
+                placeholder="Enter Password"
+              />
+            </div>
+            <div>
+              <button
+                id="botaoDeCadastro"
+                class="text-white md:text-2xl border border-[#5f7c8d] px-8 py-2 rounded-sm lg:text-xl w-full bg-[#4b687A]"
+              >
+                SignUp
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <script>
+      const usuarios = [
+        { email: "deboravitoria@simoa.com", senha: "debssss" },
+        { email: "gabriel@simoa.com", senha: "12345" },
+      ];
+      const myform = document.getElementById("myform");
+      myform.addEventListener("submit", verifyLogin);
+      const email = "deboravitoria@simoa.com";
+      const senha = "debssss";
+      formularioDeCadastroElement.addEventListener("submit", verifyLogin);
+
+      /*const botaoDeMostrarFormularioDeCadastroElement = document.getElementById(
+        "botaoDeMostrarFormularioDeCadastro"
+      );
+      //const botaoDeMostrarFormularioDeLoginElement = document.getElementById(
+        "botaoDeMostrarFormularioDeLogin"
+      );*/
+      const formularioDeCadastroElement = document.getElementById(
+        "formularioDeCadastro"
+      );
+      //formularioDeCadastroElement.addEventListener("submit", "signUp");
+      const loginbutton = document.getElementById("loginbutton");
+      const signUpButton = document.getElementById("signUpButton");
+      signUpButton.addEventListener("click", () => {
+        console.log("teste de botão de signUp");
+        myform.classList.add("hidden");
+        formularioDeCadastroElement.classList.remove("hidden");
+        signUpButton.classList.add("font-extrabold", "border-b-2");
+        loginbutton.classList.remove("font-extrabold", "border-b-2");
+      });
+      loginbutton.addEventListener("click", () => {
+        formularioDeCadastroElement.classList.add("hidden");
+        myform.classList.remove("hidden");
+        signUpButton.classList.remove("font-extrabold", "border-b-2");
+        loginbutton.classList.add("font-extrabold", "border-b-2");
+      });
+      function verifyLogin(evt) {
+        evt.preventDefault();
+        const emailElement = document.getElementById("email");
+        const emailDigitado = emailElement.value;
+        const senhaElement = document.getElementById("senha");
+        const senhaDigitada = senhaElement.value;
+        if (!emailDigitado || !senhaDigitada) {
+          alert("dados não preenchidos");
+        }
+        if (emailDigitado == email && senhaDigitada == senha) {
+          alert("login feito com sucesso");
+        } else {
+          alert("dados não confere");
+        }
+      }
+    </script>
+  </body>
+</html>
+9
